@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ -z "${MYSQL_USER}" ]; then
+    base_mysql_image_default_user='root'
+    export MYSQL_USER="${base_mysql_image_default_user}"
+fi
+export DATABASE_URL="mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DB}"
+
+postgres_ready() {
+python3 << END
+import sys
+
+import MySQLdb
+
+try:
+    MySQLdb.connect(
+        host="${MYSQL_HOST}",
+        db="${MYSQL_DB}",
+        user="${MYSQL_USER}",
+        password="${MYSQL_PASSWORD}",
+        port=int("${MYSQL_PORT}"),
+    )
+except:
+    sys.exit(-1)
+sys.exit(0)
+
+END
+}
+until postgres_ready; do
+  >&2 echo 'Waiting for MySQL to become available...'
+  sleep 1
+done
+>&2 echo 'MySQL is available'
+
+exec "$@"
