@@ -40,7 +40,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    
+    'apps.property.apps.PropertyConfig',
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

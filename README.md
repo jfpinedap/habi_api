@@ -10,3 +10,8 @@ La primera cuestión fue determinar cuál framework y que herramientas utilizar.
 # Project Structure
 
 Se configura la estructura del proyecto utilizando **docker-compose**: Acá tuve mi primer demora dado que nunca había configurado MySQL para Django y realmente el inconveniente estuvo en encontrar las dependencias para python:3.8.3-alpine ya lo demás fue más sencillo.
+
+# Models and Test configuration
+
+Se realiza la configuración de los modelos para que coincida con la base de datos. Además se genera un datos de prueba tanto de entrada como de salida para dar paso al desarrollo del manager quien hará los filtros necesarios.
+En esta etepa también se decide que la consulta se recibirá empleando el mátodo GET-REST pasando los valores por la url de la sigiente forma `domain/property?city=<str>&year=<str>&status=<str>`
