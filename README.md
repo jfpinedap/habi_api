@@ -21,6 +21,13 @@ En esta etepa también se decide que la consulta se recibirá empleando el máto
 
 # Property Manager development
 Tuve problemas con el versionamiento de las bases de datos en MySQL 8.0 están disponibles las instrucciones ROW_NUMBER() y WITH AS. Las emplee en el desarrollo local pero cuando las probé contra la base de datos de la nube no funcionaba, así que reescribí la consulta para MySQL 5.7 y todo funcionó según lo esperado junto con el testing. Esta es una primera mejora que se puede hacer a las bade de datos, actualizarla a la version 8.0.
+
+#  Entity Relationship Model - Properties favorites with owner
+
+La solución que propongo es una típica relación many to many que emplea una Through Table para hacer de puente entre el usuario y el inmueble. A continuación el modelo propuesto:
+
+![Modelo](/images/entity_relationship_model.png?style=centerme)
+
 ## Requisites
 
 * Git
